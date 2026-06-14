@@ -1,0 +1,146 @@
+:root {
+  --bg: #efefed;
+  --text: rgba(20, 20, 20, 0.84);
+  --text-strong: rgba(20, 20, 20, 0.70);
+  --text-soft: rgba(20, 20, 20, 0.72);
+  --text-faint: rgba(20, 20, 20, 0.36);
+  --font-main: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.journal-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.site-title {
+  position: fixed;
+  top: 48px;
+  left: 42px;
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(2rem, 2vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  z-index: 20;
+}
+
+.side-menu {
+  position: fixed;
+  left: 28px;
+  bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  z-index: 20;
+}
+
+.side-menu a {
+  color: var(--text-soft);
+  text-decoration: none;
+  font-size: clamp(1rem, 1vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  transition: transform 180ms ease, color 180ms ease, opacity 180ms ease;
+}
+
+.side-menu a:hover,
+.side-menu a:focus-visible,
+.side-menu a.active {
+  color: var(--text-strong);
+  transform: translateX(4px);
+  outline: none;
+}
+
+.journal-main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 150px 48px 48px 380px;
+}
+
+.note-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 48px;
+  margin-left: -32px;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.note-link:hover,
+.note-link:focus-visible {
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.note-link__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.note-link__label {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+@media (max-width: 900px) {
+  .site-title {
+    top: 28px;
+    left: 24px;
+    font-size: 1.5rem;
+  }
+
+  .side-menu {
+    left: 52px;
+    bottom: 66px;
+    gap: 14px;
+  }
+
+  .journal-main {
+    padding: 120px 20px 28px;
+  }
+
+  .note-link {
+    margin-top: 24px;
+    margin-left: -16px;
+  }
+}

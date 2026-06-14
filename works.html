@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>見る | 夢見るペトロノミカ</title>
+  <meta name="description" content="夢見るペトロノミカの作品一覧" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="works.css" />
+</head>
+<body>
+  <main class="works-page">
+    <a href="index.html" class="site-title">夢見るペトロノミカ</a>
+
+    <nav class="side-menu" aria-label="メインメニュー">
+      <a href="works.html" class="active">見る</a>
+      <a href="journal.html">書く</a>
+      <a href="contact.html">送る</a>
+    </nav>
+
+    <section class="works-main" aria-label="作品一覧">
+      <div class="year-nav" id="yearNav" aria-label="年別ナビゲーション"></div>
+
+      <div class="works-list" id="worksList" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script>
+    const worksData = {
+    "2026": [
+        {
+        type: "image",
+        src: "works/2026/01.jpg",
+        title: "サイベリア"
+        },
+        {
+        type: "video",
+        src: "https://www.youtube.com/watch?v=WWxt8SJjX2M",
+        title: "動画作品"
+        },
+    ],
+    "2025": [
+        {
+        type: "image",
+        src: "works/2025/01.jpg",
+        title: "サイベリア"
+        },
+        {
+        type: "video",
+        src: "https://www.youtube.com/watch?v=sHYRcLchWDc&t=85s",
+        title: "動画作品"
+        },
+        {
+        type: "image",
+        src: "works/2026/03.jpg",
+        title: "2026 03"
+        }
+    ],
+    "2024": [
+        {
+        type: "image",
+        src: "works/2026/01.jpg",
+        title: "サイベリア"
+        },
+        {
+        type: "video",
+        src: "https://www.youtube.com/shorts/BfITJIeC--I",
+        title: "動画作品"
+        },
+        {
+        type: "image",
+        src: "works/2026/03.jpg",
+        title: "2026 03"
+        }
+    ],
+    "2023": [
+        {
+        type: "image",
+        src: "works/2023/01.jpg",
+        title: "サイベリア"
+        },
+        {
+        type: "video",
+        src: "https://youtube.com/shorts/BfITJIeC--I",
+        title: "動画作品"
+        },
+        {
+        type: "image",
+        src: "works/2023/02.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/03.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/04.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/05.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/06.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/07.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/08.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/09.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/10.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/11.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/12.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/13.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/14.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/15.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/16.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/17.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/18.jpg",
+        title: "2026 03"
+        },
+        {
+        type: "image",
+        src: "works/2023/19.jpg",
+        title: "2026 03"
+        },
+        
+        
+    ],
+
+    };
+
+    const years = Object.keys(worksData).sort((a, b) => Number(b) - Number(a));
+    const defaultYear = years[0];
+
+    const yearNav = document.getElementById("yearNav");
+    const worksList = document.getElementById("worksList");
+
+    let currentYear = defaultYear;
+
+    function renderYearTabs(activeYear) {
+      yearNav.innerHTML = "";
+
+      years.forEach((year) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = year === activeYear ? "year-link is-active" : "year-link";
+        button.textContent = year;
+        button.setAttribute("aria-pressed", year === activeYear ? "true" : "false");
+
+        button.addEventListener("click", () => {
+          currentYear = year;
+          renderYearTabs(currentYear);
+          renderWorks(currentYear);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        yearNav.appendChild(button);
+      });
+    }
+
+    function getYouTubeEmbedUrl(url) {
+      if (!url) return "";
+
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtu\.be\/)([\w-]{11})/,
+        /^([\w-]{11})$/,
+      ];
+
+      for (const pattern of patterns) {
+        const match = url.match(pattern);
+        if (match) {
+          return `https://www.youtube.com/embed/${match[1]}`;
+        }
+      }
+
+      return "";
+    }
+
+    function renderWorks(year) {
+        worksList.innerHTML = "";
+        const currentWorks = worksData[year];
+
+        currentWorks.forEach((item) => {
+            const figure = document.createElement("figure");
+            figure.className = "work-item";
+
+            let media;
+
+            if (item.type === "video") {
+            const embedUrl = getYouTubeEmbedUrl(item.src);
+
+            if (embedUrl) {
+              const wrapper = document.createElement("div");
+              wrapper.className = "work-item__video";
+
+              media = document.createElement("iframe");
+              media.src = embedUrl;
+              media.title = item.title;
+              media.allow =
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+              media.allowFullscreen = true;
+              media.loading = "lazy";
+
+              wrapper.appendChild(media);
+              media = wrapper;
+            } else {
+              media = document.createElement("a");
+              media.className = "work-item__video-link";
+              media.href = item.src;
+              media.target = "_blank";
+              media.rel = "noopener noreferrer";
+              media.textContent = "YouTubeで見る";
+            }
+            } else {
+            media = document.createElement("img");
+            media.src = item.src;
+            media.alt = item.title;
+            }
+
+            const caption = document.createElement("figcaption");
+            caption.textContent = item.title;
+
+            figure.appendChild(media);
+            figure.appendChild(caption);
+            worksList.appendChild(figure);
+        });
+    }
+
+    renderYearTabs(currentYear);
+    renderWorks(currentYear);
+  </script>
+</body>
+</html>

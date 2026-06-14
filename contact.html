@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>送る | 夢見るペトロノミカ</title>
+  <meta name="description" content="夢見るペトロノミカへのお問い合わせ" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <main class="contact-page">
+    <a href="index.html" class="site-title">夢見るペトロノミカ</a>
+
+    <nav class="side-menu" aria-label="メインメニュー">
+      <a href="works.html">見る</a>
+      <a href="journal.html">書く</a>
+      <a href="contact.html" class="active">送る</a>
+    </nav>
+
+    <section class="contact-main" aria-label="お問い合わせ">
+      <form class="contact-form" action="mailto:nullfullness@gmail.com" method="post" enctype="text/plain">
+        <div class="contact-field">
+          <label for="name">お名前</label>
+          <input type="text" id="name" name="name" autocomplete="name" required />
+        </div>
+
+        <div class="contact-field">
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" name="email" autocomplete="email" required />
+        </div>
+
+        <div class="contact-field">
+          <label for="message">メッセージ</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit">送る</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

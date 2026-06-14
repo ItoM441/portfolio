@@ -1,0 +1,181 @@
+:root {
+  --bg: #efefed;
+  --text: rgba(20, 20, 20, 0.84);
+  --text-strong: rgba(20, 20, 20, 0.70);
+  --text-soft: rgba(20, 20, 20, 0.72);
+  --text-faint: rgba(20, 20, 20, 0.36);
+  --font-main: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.site-title {
+  position: fixed;
+  top: 48px;
+  left: 42px;
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(2rem, 2vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  z-index: 20;
+}
+
+.side-menu {
+  position: fixed;
+  left: 28px;
+  bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  z-index: 20;
+}
+
+.side-menu a {
+  color: var(--text-soft);
+  text-decoration: none;
+  font-size: clamp(1rem, 1vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  transition: transform 180ms ease, color 180ms ease, opacity 180ms ease;
+}
+
+.side-menu a:hover,
+.side-menu a:focus-visible,
+.side-menu a.active {
+  color: var(--text-strong);
+  transform: translateX(4px);
+  outline: none;
+}
+
+.contact-main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 150px 48px 48px 380px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: min(100%, 480px);
+  margin-top: 48px;
+  margin-left: -32px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-field label {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.16);
+  background: transparent;
+  padding: 10px 0;
+  color: var(--text);
+  font: inherit;
+  letter-spacing: 0.04em;
+  transition: border-color 180ms ease;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  outline: none;
+  border-bottom-color: rgba(20, 20, 20, 0.42);
+}
+
+.contact-field textarea {
+  min-height: 160px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.contact-submit {
+  align-self: flex-start;
+  margin-top: 8px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: clamp(1rem, 1vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.contact-submit:hover,
+.contact-submit:focus-visible {
+  color: var(--text-strong);
+  transform: translateX(4px);
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .site-title {
+    top: 28px;
+    left: 24px;
+    font-size: 1.5rem;
+  }
+
+  .side-menu {
+    left: 52px;
+    bottom: 66px;
+    gap: 14px;
+  }
+
+  .contact-main {
+    padding: 120px 20px 28px;
+  }
+
+  .contact-form {
+    margin-top: 24px;
+    margin-left: -16px;
+    width: 100%;
+  }
+}
